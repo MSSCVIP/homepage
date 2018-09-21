@@ -1,6 +1,6 @@
 <template>
     <div id="banner">
-        <Header></Header>
+        <Mheader></Mheader>
         <div class="banner-content">
             <div class="content">
                 <el-rows justify="center">
@@ -19,12 +19,12 @@
     </div>
 </template>
 <script>
-    import Header from "@/components/Header"
+    import Mheader from "@/components/Header"
 
     export default {
         name: "banner",
         components: {
-            Header
+            Mheader
         }
     }
 </script>

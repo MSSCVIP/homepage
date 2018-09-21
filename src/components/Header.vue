@@ -1,5 +1,5 @@
 <template>
-<div id="header">
+<div id="mheader">
     <div class="content">
         <el-rows justify="space-between">
             <el-col :span="8">
@@ -8,7 +8,7 @@
                 </div>
             </el-col>
             <el-col :span="16">
-                <Nav></Nav>
+                <Mnav></Mnav>
             </el-col>
         </el-rows>
     </div>
@@ -17,17 +17,17 @@
 
 <script>
     // @ is an alias to /src
-    import Nav from "@/components/Nav"
+    import Mnav from "@/components/Nav"
 
     export default {
-        name: 'header',
+        name: 'mheader',
         components: {
-            Nav
+            Mnav
         }
     }
 </script>
 <style lang="less">
-    #header{
+    #mheader{
         .logo{
             text-align: left;
         }

@@ -82,13 +82,14 @@
 <style lang="less">
     #roadmap{
         position: relative;
+        padding-top: 120px;
         text-align: left;
         .roadmap-left{
         }
         .roadmap-content{
             position: absolute;
             left: 50%;
-            top: 50px;
+            top: 120px;
             &:before{
                 position: absolute;
                 content:"";

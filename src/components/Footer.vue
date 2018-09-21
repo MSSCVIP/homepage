@@ -1,5 +1,5 @@
 <template>
-    <div id="footer">
+    <div id="mfooter">
         <div class="content">
             <el-rows justify="center">
                 <el-col :span="24">
@@ -11,11 +11,11 @@
 </template>
 <script>
     export default {
-        name:'footer'
+        name:'mfooter'
     }
 </script>
 <style lang="less">
-    #footer{
+    #mfooter{
         color: #666;
         text-align: center;
         line-height: 60px;

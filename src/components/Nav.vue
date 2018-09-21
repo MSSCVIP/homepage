@@ -1,9 +1,9 @@
 <template>
-    <div id="nav">
+    <div id="mnav">
         <ul>
             <li class="active"><a href="#">首页</a></li>
             <li class=""><a href="#white-paper">白皮书</a></li>
-            <li class=""><a href="#intor">概述</a></li>
+            <li class=""><a href="#architecture">概述</a></li>
             <li class=""><a href="#roadmap">进度</a></li>
             <li class=""><a href="#about">关于</a></li>
         </ul>
@@ -13,7 +13,7 @@
 <script>
     // @ is an alias to /src
     export default {
-        name: 'nav',
+        name: 'mnav',
         components: {
         }
     }
@@ -21,7 +21,7 @@
 <!--style[lang="less"]-->
 
 <style lang="less">
-    #nav{
+    #mnav{
         padding:0;
         text-align: right;
         overflow: hidden;

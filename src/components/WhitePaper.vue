@@ -20,16 +20,40 @@
                     </div>
                 </el-col>
                 <el-col :span="8">
-                    <div class="register ms-area">
-                        <h4 class="ms-blue">登记 MSSC</h4>
-                        <div class="register-box">
-                            <input type="text" class="user-name" placeholder="请输入用户名">
-                            <input type="text" class="user-phone" placeholder="请输入电话">
-                            <input type="text" class="user-mail" placeholder="请输入邮箱">
-                            <input type="text" class="user-eos-account" placeholder="请输入EOS账号">
+                        <div class="register ms-area">
+                            <h4 class="ms-blue">登记 MSSC</h4>
+                            <div class="register-box">
+                                <!--<el-form :rules="rules" :model="rulesData" ref="registerForm">-->
+                                    <!--<el-rows>-->
+                                        <!--<el-col :span="12">-->
+                                            <!--<el-form-item prop="name">-->
+                                                <!--<el-input class="user-name" name="name" v-model="rulesData.userName" placeholder="请输入用户名"></el-input>-->
+                                            <!--</el-form-item>-->
+                                        <!--</el-col>-->
+                                        <!--<el-col :span="12">-->
+                                            <!--<el-form-item prop="phone">-->
+                                                <!--<el-input class="user-phone" name="phone" v-model="rulesData.phoneNum" placeholder="请输入电话"></el-input>-->
+                                            <!--</el-form-item>-->
+                                        <!--</el-col>-->
+                                        <!--<el-col :span="12">-->
+                                            <!--<el-form-item prop="mail">-->
+                                                <!--<el-input class="user-mail" name="mail" v-model="rulesData.email" placeholder="请输入邮箱"></el-input>-->
+                                            <!--</el-form-item>-->
+                                        <!--</el-col>-->
+                                        <!--<el-col :span="12">-->
+                                            <!--<el-form-item prop="eosAccount">-->
+                                                <!--<el-input class="user-eos-account" name="eosAccount" v-model="rulesData.eosAccount" placeholder="请输入EOS账号"></el-input>-->
+                                            <!--</el-form-item>-->
+                                        <!--</el-col>-->
+                                    <!--</el-rows>-->
+                                <!--</el-form>-->
+                                <input type="text" class="user-name" name="name" v-model="userName.name" placeholder="请输入用户名">
+                                <input type="text" class="user-phone" name="phone" v-model="phoneNum" placeholder="请输入电话">
+                                <input type="text" class="user-mail" name="mail" v-model="email" placeholder="请输入邮箱">
+                                <input type="text" class="user-eos-account" name="eosAccount" v-model="eosAccount" placeholder="请输入EOS账号">
+                            </div>
+                            <div class="ms-btn ms-bg-yellow with-arrow register-btn" @click="register">登记 MSSC</div>
                         </div>
-                        <div class="ms-btn ms-bg-yellow with-arrow register-btn">登记 MSSC</div>
-                    </div>
                 </el-col>
             </el-rows>
         </div>
@@ -38,8 +62,60 @@
 <script>
     export default {
         name:"whitePaper",
-        components:{
+        data(){
+            var checkPhone = (rule,value,callback) => {
 
+                let phoneRegExp = /^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\\d{8}$/
+                if(!phoneRegExp.test(value)){
+                    return callback(new Error("请输入正确的手机号码"))
+                }else {
+                    callback()
+                }
+                // if(!value){
+                //     return callback(new Error("手机号码不能为空"))
+                // }else{
+                //     let phoneRegExp = /^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\\d{8}$/
+                //     if(!phoneRegExp.test(value)){
+                //         return callback(new Error("请输入正确的手机号码"))
+                //     }
+                // }
+            }
+            return{
+                userName:"",
+                phoneNum:"",
+                eosAccount:"",
+                email:"",
+                obj:{
+                    name:""
+                },
+                rules:{
+                    // name:[
+                    //     {type:"string",required:true, message:"请输入用户名",trigger:"blur"}
+                    // ],
+                    // mail:[
+                    //     {required:true,message:"请输入邮箱",trigger:"blur"},
+                    //     {type: "email",message:"请输入正确的邮箱",trigger:"blur"}
+                    // ],
+                    // eosAccount:[
+                    //     {type: "",required:true,message:"请输入eos账号",trigger:"blur"}
+                    // ],
+                    // phone:[
+                    //     {validator:checkPhone,trigger:"blur"}
+                    // ]
+                }
+            }
+        },
+        methods:{
+            register(){
+                let data = {
+                    userName:this.userName,
+                    phoneNum:this.phoneNum,
+                    eosAccount:this.eosAccount,
+                    email:this.email
+                }
+                console.log(JSON.stringify(data))
+                //console.log(this.obj)
+            }
         }
     }
 </script>
