@@ -16,7 +16,7 @@
                 </el-col>
                 <el-col :span="8">
                     <div class="bancor-protocol">
-                        <img src="../assets/images/bancor.png" alt="">
+                        <img src="../../assets/images/bancor.png" alt="">
                     </div>
                 </el-col>
                 <el-col :span="8">
@@ -47,10 +47,13 @@
                                         <!--</el-col>-->
                                     <!--</el-rows>-->
                                 <!--</el-form>-->
-                                <input type="text" class="user-name" name="name" v-model="userName.name" placeholder="请输入用户名">
-                                <input type="text" class="user-phone" name="phone" v-model="phoneNum" placeholder="请输入电话">
-                                <input type="text" class="user-mail" name="mail" v-model="email" placeholder="请输入邮箱">
-                                <input type="text" class="user-eos-account" name="eosAccount" v-model="eosAccount" placeholder="请输入EOS账号">
+                                <input type="text" class="user-eos-account" name="eosAccount" v-model="user.eosadr" @blur="validateEosadr(user.eosadr)" placeholder="请输入EOS账号">
+                                <div class="investment">
+                                    <el-radio v-model="user.type" label="1">天使轮</el-radio>
+                                    <el-radio v-model="user.type" label="2">基石轮</el-radio>
+                                </div>
+                                <input type="text" class="user-phone" name="phone" v-model="user.phoneNum" @blur="validatePhone(user.phoneNum)" placeholder="请输入电话">
+                                <input type="text" class="user-mail" name="mail" v-model="user.email" @blur="validateEmail(user.email)" placeholder="请输入邮箱">
                             </div>
                             <div class="ms-btn ms-bg-yellow with-arrow register-btn" @click="register">登记 MSSC</div>
                         </div>
@@ -63,30 +66,15 @@
     export default {
         name:"whitePaper",
         data(){
-            var checkPhone = (rule,value,callback) => {
-
-                let phoneRegExp = /^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\\d{8}$/
-                if(!phoneRegExp.test(value)){
-                    return callback(new Error("请输入正确的手机号码"))
-                }else {
-                    callback()
-                }
-                // if(!value){
-                //     return callback(new Error("手机号码不能为空"))
-                // }else{
-                //     let phoneRegExp = /^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\\d{8}$/
-                //     if(!phoneRegExp.test(value)){
-                //         return callback(new Error("请输入正确的手机号码"))
-                //     }
-                // }
-            }
             return{
-                userName:"",
-                phoneNum:"",
-                eosAccount:"",
-                email:"",
-                obj:{
-                    name:""
+                isPhone:false,
+                isEmail:false,
+                isEosAdr:false,
+                user:{
+                    eosadr:"",
+                    type:"1",
+                    phoneNum:"",
+                    email:"",
                 },
                 rules:{
                     // name:[
@@ -107,72 +95,53 @@
         },
         methods:{
             register(){
-                let data = {
-                    userName:this.userName,
-                    phoneNum:this.phoneNum,
-                    eosAccount:this.eosAccount,
-                    email:this.email
+                let datas = null;
+                if(this.isPhone && this.isEmail && this.isEosAdr){
+                    datas = JSON.stringify(this.user);
+                    this.axios.post("/api/user/register",this.user).then((res)=>{
+                        if(res.status == 99999)
+                        console.log(res)
+                    })
                 }
-                console.log(JSON.stringify(data))
+                console.log(this.isPhone && this.isEmail && this.isEosAdr,datas)
                 //console.log(this.obj)
+            },
+            validatePhone(val){
+                if(!val){
+                    console.log("手机号码不能为空")
+                    return
+                }
+
+                let phoneRegExp = /^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\d{8}$/
+                if(phoneRegExp.test(val)){
+                    this.isPhone = true;
+                }else {
+                    console.log(val,"请输入正确的手机号码")
+                    return
+                }
+            },
+            validateEmail(val){
+                if(!val){
+                    console.log("邮箱不能为空")
+                    return
+                }
+
+                let mailRegExp = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/
+                if(!mailRegExp.test(val)){
+                    console.log("请输入正确的邮箱地址")
+                    return
+                }else {
+                    this.isEmail = true;
+                }
+            },
+            validateEosadr(val){
+                if(!val){
+                    console.log("eos地址不能为空")
+                    return
+                }else {
+                    this.isEosAdr = true;
+                }
             }
         }
     }
 </script>
-<style lang="less">
-    #white-paper{
-        height: 639px;
-        background: url("../assets/images/solve_bg.jpg")0 0 no-repeat;
-        .ms-area{
-            position: relative;
-            width: 346px;
-            height: 206px;
-            background: #fff;
-            border-radius:20px;
-            padding: 32px;
-            text-align: left;
-            h4{
-                font-size: 24px;
-                font-weight: 500;
-                margin-top: 0;
-                margin-bottom: 20px;
-            }
-            .ms-btn{
-                position: absolute;
-                bottom:-28px;
-                left:32px;
-            }
-            p{
-                line-height: 26px;
-            }
-        }
-        .register{
-            margin-left: 16px;
-            h4{
-                margin-bottom: 40px;
-            }
-            input{
-                float: left;
-                width: 133px;
-                margin-bottom: 20px;
-                margin-right: 20px;
-                border-radius: 16px;
-                height: 22px;
-                line-height: 22px;
-                background:#f1f2f3;
-                border:0;
-                padding:5px 15px;
-                outline: 0;
-            }
-            input:nth-child(2),
-            input:nth-child(4){
-                margin-right: 0;
-            }
-        }
-        .bancor-protocol{
-            img{
-                margin:0 auto;
-            }
-        }
-    }
-</style>

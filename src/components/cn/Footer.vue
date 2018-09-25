@@ -14,12 +14,3 @@
         name:'mfooter'
     }
 </script>
-<style lang="less">
-    #mfooter{
-        color: #666;
-        text-align: center;
-        line-height: 60px;
-        height: 60px;
-        background: #dddddd;
-    }
-</style>

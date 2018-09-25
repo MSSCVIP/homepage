@@ -1,0 +1,502 @@
+
+@msBlue:#6c81e2;
+@msYellow:#f5ae48;
+
+html,body{
+  margin:0;
+  padding:0;
+  color:#444;
+  background: #f1f2f3;
+}
+
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #444;
+  .content{
+    position: relative;
+    #nav{
+      position: absolute;
+      top: 90px;
+      right: 0;
+      z-index: 100;
+    }
+  }
+}
+#nav {
+  a {
+    color: #fff;
+    opacity: .5;
+    text-decoration: none;
+    margin-left: 10px;
+    &.router-link-exact-active {
+      font-weight: bold;
+      color: #fff;
+      opacity: 1;
+      &:after{
+        content:'/';
+        position: absolute;
+        right: 25px;
+        top: 3px;
+        font-weight: normal;
+        opacity: .5;
+      }
+    }
+  }
+}
+.ms-btn{
+  width: 140px;
+  height: 16px;
+  line-height: 16px;
+  color: #fff;
+  background: @msBlue;
+  padding: 20px 30px;
+  border-radius: 28px;
+  cursor: pointer;
+}
+.ms-bg-yellow{
+  background: @msYellow!important;
+  -webkit-box-shadow:  0 5px 15px @msYellow;
+  -moz-box-shadow:  0 5px 15px @msYellow;
+  box-shadow:  0 5px 15px @msYellow;
+}
+.with-arrow{
+  position: relative;
+  &:after{
+    content:"";
+    position: absolute;
+    right:30px;
+    top: 16px;
+    width: 24px;
+    height: 24px;
+    background:url("../images/arrow.png") 0 0 no-repeat;
+  }
+}
+.ms-blue{
+  color:@msBlue;
+}
+.content{
+  width: 1280px;
+  margin:0 auto;
+  .title{
+    position: relative;
+    text-align: left;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 80px;
+    &:after{
+      content:"";
+      position: absolute;
+      left: 0;
+      bottom:-40px;
+      width: 50px;
+      height: 5px;
+      background-color: @msBlue;
+    }
+  }
+}
+//Header
+#mheader{
+  .logo{
+    text-align: left;
+  }
+}
+
+//Nav
+#mnav{
+  padding:0;
+  text-align: right;
+  overflow: hidden;
+  ul{
+    float: right;
+    margin-right: 150px;
+    li{
+      position:relative;
+      list-style-type: none;
+      float: left;
+      padding:0 30px;
+      height: 86px;
+      line-height: 86px;
+      text-align: right;
+      a{
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        text-decoration: none;
+      }
+      &.active{
+        a:before{
+          content:"";
+          display:block;
+          position:absolute;
+          left: 50%;
+          bottom: 20px;
+          margin-left:-15px;
+          width:30px;
+          height:2px;
+          background:#fff;
+        }
+      }
+    }
+  }
+}
+
+//Banner
+#banner {
+  padding-top: 40px;
+  width: 100%;
+  height: 760px;
+  background:url("../images/head_bg.jpg") 0 0 no-repeat;
+  .banner-content{
+    h1{
+      margin-top: 120px;
+      position: relative;
+      font-size:100px;
+      color:#fff;
+      &:after{
+        content:"";
+        display: block;
+        position:absolute;
+        bottom:-50px;
+        left:50%;
+        margin-left: -25px;
+        width:50px;
+        height: 5px;
+        background:#f5ae48;
+      }
+    }
+    p{
+      color:#f5ae48;
+      font-size:32px;
+      margin-bottom: 5px;
+    }
+    span{
+      color:#f5ae48;
+    }
+  }
+}
+
+//解决问题 what we solve
+#white-paper{
+  height: 639px;
+  background: url("../images/solve_bg.jpg")0 0 no-repeat;
+  .ms-area{
+    position: relative;
+    width: 346px;
+    height: 206px;
+    background: #fff;
+    border-radius:20px;
+    padding: 32px;
+    text-align: left;
+    h4{
+      font-size: 24px;
+      font-weight: 500;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+    .ms-btn{
+      position: absolute;
+      bottom:-28px;
+      left:32px;
+    }
+    p{
+      line-height: 26px;
+    }
+  }
+  .register{
+    margin-left: 16px;
+    h4{
+      margin-bottom: 40px;
+    }
+    input{
+      float: left;
+      width: 133px;
+      margin-bottom: 20px;
+      margin-right: 20px;
+      border-radius: 16px;
+      height: 22px;
+      line-height: 22px;
+      background:#f1f2f3;
+      border:0;
+      padding:5px 15px;
+      outline: 0;
+    }
+    input:nth-child(2),
+    input:nth-child(4){
+      margin-right: 0;
+    }
+  }
+  .bancor-protocol{
+    img{
+      margin:0 auto;
+    }
+  }
+}
+
+//系统架构 Architecture
+#architecture{
+  height: 800px;
+  background:url("../images/architecture_bg.jpg") 0 0 no-repeat;
+  .content{
+    .architecture-tabs{
+      margin-top: -120px;
+      padding-top: 120px;
+      .el-tabs__nav{
+        .el-tabs__active-bar{
+          display: none;
+        }
+      }
+      .el-tabs__nav-wrap{
+        height: 80px;
+        &:after{
+          display: none;
+        }
+      }
+      .el-tabs__item{
+        font-size: 24px;
+        color: #fff;
+        opacity: .5;
+        height: 80px;
+        &:nth-child(2){
+          &.is-active{
+            &:after{
+              margin-left: -25px;
+            }
+          }
+        }
+        &:nth-child(6){
+          &.is-active{
+            &:after{
+              margin-left: -5px;
+            }
+          }
+        }
+        &.is-active{
+          position: relative;
+          opacity: 1;
+          font-weight: bold;
+          &:after{
+            content:"";
+            position: absolute;
+            left: 50% !important;
+            bottom: 20px;
+            margin-left: -15px;
+            background-color: #fff;
+            width: 30px !important;
+            height: 5px !important;
+          }
+        }
+      }
+    }
+    .model-panel{
+      position: relative;
+      width: 100%;
+      height: 620px;
+      .model-img{
+        position: absolute;
+        left: 50%;
+        bottom:0;
+        margin-left: -236px;
+      }
+    }
+    .service-panel{
+      width: 100%;
+      height: 340px;
+      background: #fff;
+      border-radius: 10px;
+      padding: 100px 0;
+      el-rows{
+        overflow: hidden;
+      }
+      .item{
+        position: relative;
+        &:after{
+          content: '';
+          position: absolute;
+          top: 50%;
+          right: 0;
+          margin-top: -165px;
+          background: #cccccc;
+          width: 1px;
+          height: 330px;
+        }
+        &:last-child{
+          &:after{
+            display: none;
+          }
+        }
+        .service-img{
+          display: block;
+          width: 130px;
+          height: 130px;
+          margin: 0 auto;
+          overflow: hidden;
+          background-image: url("../images/service.gif");
+          background-repeat: no-repeat;
+          &.service-rocket{
+            background-position: 0 0;
+          }
+          &.service-layer{
+            background-position: -130px 0;
+          }
+          &.service-plugin{
+            background-position: -260px 0;
+          }
+        }
+      }
+    }
+    .quality-panel{
+      width: 100%;
+      height: 500px;
+      padding: 20px 0;
+      background: #fff;
+      border-radius: 10px;
+      .item{
+        &:first-child,&:nth-child(2),&:nth-child(3){
+          margin-bottom: 10px;
+        }
+      }
+      .quality-img{
+        width: 180px;
+        height: 120px;
+        display: block;
+        margin: 0 auto;
+        overflow: hidden;
+        background-image: url("../images/quality.jpg");
+        background-repeat: no-repeat;
+        &.quality1{
+          background-position: 0 0;
+        }
+        &.quality2{
+          background-position: -180px 0;
+        }
+        &.quality3{
+          background-position: -360px 0;
+        }
+        &.quality4{
+          background-position: -540px 0;
+        }
+        &.quality5{
+          background-position: -720px 0;
+        }
+        &.quality6{
+          background-position: -900px 0;
+        }
+      }
+      .service-intro{
+        width: 180px;
+        height: 57px;
+        overflow: auto;
+        margin: 0 auto;
+        color: #666;
+        font-size: 14px;
+        text-align: left;
+      }
+    }
+    .architecture-bancor,.architecture-system{
+      border-radius: 10px;
+    }
+
+  }
+}
+
+//进度 Roadmap
+#roadmap{
+  position: relative;
+  padding-top: 120px;
+  text-align: left;
+  .roadmap-left{
+  }
+  .roadmap-content{
+    position: absolute;
+    left: 50%;
+    top: 120px;
+    &:before{
+      position: absolute;
+      content:"";
+      margin:10px auto;
+      width:2px;
+      height:600px;
+      background-color: #d8dfff;
+    }
+    .roadmap-list{
+      position: absolute;
+      min-width:560px;
+      left: -172px;
+      .item{
+        display: block;
+        overflow: hidden;
+        font-size: 16px;
+        color:#666666;
+        margin-bottom: 20px;
+        b{
+          float: left;
+          width: 112px;
+          margin:0 10px;
+          font-family: Arial;
+          font-weight: bold;
+          text-align: center;
+          font-size: 24px;
+          height: 52px;
+          line-height: 52px;
+        }
+        img{
+          float: left;
+          margin: 0 17.5px;
+        }
+        .item-content{
+          float: left;
+          margin:0 15px;
+          text-align: left;
+          p{
+            line-height: 24px;
+            margin:0;
+          }
+        }
+      }
+      .item:first-child{
+        b{
+          height: 69px;
+          line-height: 69px;
+        }
+        img{
+          margin:0 10px;
+        }
+      }
+    }
+  }
+}
+
+//关于我们 About
+#about{
+  background:#0c163c;
+  padding-top: 120px;
+  padding-bottom: 50px;
+  .content{
+    overflow: hidden;
+    b{
+      display: block;
+      font-size: 18px;
+      color:#fff;
+      margin-top: 20px;
+    }
+    p{
+      width: 220px;
+      margin: 20px auto;
+      font-size: 14px;
+      text-align: left;
+      color:#fff;
+    }
+  }
+}
+
+//Footer
+#mfooter{
+  color: #666;
+  text-align: center;
+  line-height: 60px;
+  height: 60px;
+  background: #dddddd;
+}

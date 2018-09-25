@@ -2,12 +2,12 @@
 <div id="mheader">
     <div class="content">
         <el-rows justify="space-between">
-            <el-col :span="8">
+            <el-col :span="6">
                 <div class="logo">
-                    <img src="../assets/images/logo.png" alt="">
+                    <img src="../../assets/images/logo.png" alt="">
                 </div>
             </el-col>
-            <el-col :span="16">
+            <el-col :span="18">
                 <Mnav></Mnav>
             </el-col>
         </el-rows>
@@ -17,7 +17,7 @@
 
 <script>
     // @ is an alias to /src
-    import Mnav from "@/components/Nav"
+    import Mnav from "@/components/en/Nav"
 
     export default {
         name: 'mheader',
@@ -26,11 +26,3 @@
         }
     }
 </script>
-<style lang="less">
-    #mheader{
-        .logo{
-            text-align: left;
-        }
-
-    }
-</style>
