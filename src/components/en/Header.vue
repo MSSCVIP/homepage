@@ -1,18 +1,18 @@
 <template>
-<div id="mheader">
-    <div class="content">
-        <el-rows justify="space-between">
-            <el-col :span="6">
-                <div class="logo">
-                    <img src="../../assets/images/logo.png" alt="">
-                </div>
-            </el-col>
-            <el-col :span="18">
-                <Mnav></Mnav>
-            </el-col>
-        </el-rows>
+    <div id="mheader">
+        <div class="content">
+            <el-rows justify="space-between">
+                <el-col :span="6">
+                    <div class="logo">
+                        <img src="../../assets/images/logo.png" alt="">
+                    </div>
+                </el-col>
+                <el-col :span="18">
+                    <Mnav></Mnav>
+                </el-col>
+            </el-rows>
+        </div>
     </div>
-</div>
 </template>
 
 <script>

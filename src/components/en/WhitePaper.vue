@@ -20,43 +20,43 @@
                     </div>
                 </el-col>
                 <el-col :span="8">
-                        <div class="register ms-area">
-                            <h4 class="ms-blue">登记 MSSC</h4>
-                            <div class="register-box">
-                                <!--<el-form :rules="rules" :model="rulesData" ref="registerForm">-->
-                                    <!--<el-rows>-->
-                                        <!--<el-col :span="12">-->
-                                            <!--<el-form-item prop="name">-->
-                                                <!--<el-input class="user-name" name="name" v-model="rulesData.userName" placeholder="请输入用户名"></el-input>-->
-                                            <!--</el-form-item>-->
-                                        <!--</el-col>-->
-                                        <!--<el-col :span="12">-->
-                                            <!--<el-form-item prop="phone">-->
-                                                <!--<el-input class="user-phone" name="phone" v-model="rulesData.phoneNum" placeholder="请输入电话"></el-input>-->
-                                            <!--</el-form-item>-->
-                                        <!--</el-col>-->
-                                        <!--<el-col :span="12">-->
-                                            <!--<el-form-item prop="mail">-->
-                                                <!--<el-input class="user-mail" name="mail" v-model="rulesData.email" placeholder="请输入邮箱"></el-input>-->
-                                            <!--</el-form-item>-->
-                                        <!--</el-col>-->
-                                        <!--<el-col :span="12">-->
-                                            <!--<el-form-item prop="eosAccount">-->
-                                                <!--<el-input class="user-eos-account" name="eosAccount" v-model="rulesData.eosAccount" placeholder="请输入EOS账号"></el-input>-->
-                                            <!--</el-form-item>-->
-                                        <!--</el-col>-->
-                                    <!--</el-rows>-->
-                                <!--</el-form>-->
-                                <input type="text" class="user-eos-account" name="eosAccount" v-model="user.eosadr" @blur="validateEosadr(user.eosadr)" placeholder="请输入EOS账号">
-                                <div class="investment">
-                                    <el-radio v-model="user.type" label="1">天使轮</el-radio>
-                                    <el-radio v-model="user.type" label="2">基石轮</el-radio>
-                                </div>
-                                <input type="text" class="user-phone" name="phone" v-model="user.phoneNum" @blur="validatePhone(user.phoneNum)" placeholder="请输入电话">
-                                <input type="text" class="user-mail" name="mail" v-model="user.email" @blur="validateEmail(user.email)" placeholder="请输入邮箱">
+                    <div class="register ms-area">
+                        <h4 class="ms-blue">登记 MSSC</h4>
+                        <div class="register-box">
+                            <!--<el-form :rules="rules" :model="rulesData" ref="registerForm">-->
+                            <!--<el-rows>-->
+                            <!--<el-col :span="12">-->
+                            <!--<el-form-item prop="name">-->
+                            <!--<el-input class="user-name" name="name" v-model="rulesData.userName" placeholder="请输入用户名"></el-input>-->
+                            <!--</el-form-item>-->
+                            <!--</el-col>-->
+                            <!--<el-col :span="12">-->
+                            <!--<el-form-item prop="phone">-->
+                            <!--<el-input class="user-phone" name="phone" v-model="rulesData.phoneNum" placeholder="请输入电话"></el-input>-->
+                            <!--</el-form-item>-->
+                            <!--</el-col>-->
+                            <!--<el-col :span="12">-->
+                            <!--<el-form-item prop="mail">-->
+                            <!--<el-input class="user-mail" name="mail" v-model="rulesData.email" placeholder="请输入邮箱"></el-input>-->
+                            <!--</el-form-item>-->
+                            <!--</el-col>-->
+                            <!--<el-col :span="12">-->
+                            <!--<el-form-item prop="eosAccount">-->
+                            <!--<el-input class="user-eos-account" name="eosAccount" v-model="rulesData.eosAccount" placeholder="请输入EOS账号"></el-input>-->
+                            <!--</el-form-item>-->
+                            <!--</el-col>-->
+                            <!--</el-rows>-->
+                            <!--</el-form>-->
+                            <input type="text" class="user-eos-account" name="eosAccount" v-model="user.eosadr" @blur="validateEosadr(user.eosadr)" placeholder="请输入EOS账号">
+                            <div class="investment">
+                                <el-radio v-model="user.type" label="1">天使轮</el-radio>
+                                <el-radio v-model="user.type" label="2">基石轮</el-radio>
                             </div>
-                            <div class="ms-btn ms-bg-yellow with-arrow register-btn" @click="register">登记 MSSC</div>
+                            <input type="text" class="user-phone" name="phone" v-model="user.phoneNum" @blur="validatePhone(user.phoneNum)" placeholder="请输入电话">
+                            <input type="text" class="user-mail" name="mail" v-model="user.email" @blur="validateEmail(user.email)" placeholder="请输入邮箱">
                         </div>
+                        <div class="ms-btn ms-bg-yellow with-arrow register-btn" @click="register">登记 MSSC</div>
+                    </div>
                 </el-col>
             </el-rows>
         </div>
@@ -100,7 +100,7 @@
                     datas = JSON.stringify(this.user);
                     this.axios.post("/api/user/register",this.user).then((res)=>{
                         if(res.status == 99999)
-                        console.log(res)
+                            console.log(res)
                     })
                 }
                 console.log(this.isPhone && this.isEmail && this.isEosAdr,datas)

@@ -11,11 +11,12 @@ function select(sql) {
         var connection = mysql.createConnection({
             host: 'localhost',
             user: 'root',
-            password: '123456'
+            port: '3306',
+            password: '123456',
+            database: 'mssc'
         });
 
         connection.connect();
-        connection.query("USE mssc_tbl");
         connection.query(sql, function (err, results, fields) {
                 if (err) {
                     console.log("err");
@@ -52,7 +53,7 @@ router.use(function timeLog(req, res, next) {
 
 router.post("/register", function (req, res) {
     var _user = req.body;
-    console.log(req.body);
+    console.log(_user);
     //var userName = _user.name;
 
     var eosadr = _user.eosadr;
@@ -60,28 +61,71 @@ router.post("/register", function (req, res) {
     var phone = _user.phoneNum;
     var email = _user.email;
     var amount = 0;
-    var timeStamp = (new Date()).valueOf();
-
-    select('SELECT * FROM user WHERE phone ="' + phone + '" AND email = "' + email + '" AND eosadr ="' + eosadr + '"').then(function (data) {
+    select('INSERT INTO user(phone,email,eosadr,eosamt,type) VALUES("' + phone + '","' + email + '","' + eosadr + '","' + amount + '","' + type + '")').then(function (data) {
+        console.log(data)
+        res.json({state: 1});
+        res.end();
+    }).catch(function (err) {
+        console.log(err)
+        //res.json({state: 0});
+        res.end();
+    });
+})
+router.get("/checkEosadr", function (req, res) {
+    var _eosadr = req.query.eosadr;
+    select('SELECT * FROM user WHERE eosadr="' + _eosadr + '"').then(function (data) {
         if (data.status == 1) {
-            console.log("手机、邮箱、eos地址不可重复！");
+            console.log('eos地址已存在')
             res.json({
-                status: 0,
-                text: "手机、邮箱、eos地址不可重复！"
+                existed: true
             });
             res.end();
-        } else {
-            // INSERT INTO user(phone,email,eosadr,eosamt,type,time,password) VALUES("13700137000","e@qq.com","eosadr","0","0","2018","abc")
-            select('INSERT INTO user(phone,email,eosadr,eosamt,type,time) VALUES ("' + phone + '", "' + email + '", "' + eosadr + '","'+amount+'", "' + type + '", "' +timeStamp+'")').then(function (data) {
-                console.log(data.result)
-                res.json({state: 1});
-                res.end();
-            }).catch(function (err) {
-
+        }else {
+            res.json({
+                existed: false
             });
+            res.end();
         }
     }).catch(function (err) {
-
+        console.log(err)
+    })
+})
+router.get("/checkPhone", function (req, res) {
+    var _phone = req.query.phoneNum;
+    select('SELECT * FROM user WHERE phone="' + _phone + '"').then(function (data) {
+        if (data.status == 1) {
+            console.log('手机已存在')
+            res.json({
+                existed: true
+            });
+            res.end();
+        }else {
+            res.json({
+                existed: false
+            });
+            res.end();
+        }
+    }).catch(function (err) {
+        console.log(err)
+    })
+})
+router.get("/checkEmail", function (req, res) {
+    var _email = req.query.email;
+    select('SELECT * FROM user WHERE email="' + _email + '"').then(function (data) {
+        if (data.status == 1) {
+            console.log('邮箱地址已存在')
+            res.json({
+                existed: true
+            });
+            res.end();
+        }else {
+            res.json({
+                existed: false
+            });
+            res.end();
+        }
+    }).catch(function (err) {
+        console.log(err)
     })
 })
 router.get("/test", function (req, res) {
