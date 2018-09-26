@@ -1,3 +1,0 @@
-var utils = {};
-
-return utils;
