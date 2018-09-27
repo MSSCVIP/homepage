@@ -5,18 +5,14 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    isPhone:false,
-    isEmail:false,
-    isEosAdr:false
+    // isPhone:false,
+    // isEmail:false,
+    // isEosAdr:false
   },
   mutations: {
-    validatePhone(state,val=''){
-      if(val){
-        this.$notify.warning({
-          message: "手机号码不能为空！"
-        })
-      }
-    }
+    // validatePhone(state,val=''){
+    //
+    // }
   },
   actions: {
 

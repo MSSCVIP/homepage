@@ -12,7 +12,7 @@
                             魔方链是革新性的区块链电子商务生态平台，旨在让缺乏技术人才的中小企业用户通过魔方链核心的去中心化电子商务 BAAS（区块链即服务Blockchain as a
                             Service）平台，轻松快速实现去中心化电子商务应用构建、 部署及维护
                         </p>
-                        <div class="ms-btn ms-bg-yellow with-arrow white-paper-btn">白皮书</div>
+                        <div class="ms-btn ms-bg-yellow with-arrow white-paper-btn" @click="downloadWP">白皮书</div>
                     </div>
                 </el-col>
                 <el-col :span="8">
@@ -211,6 +211,10 @@
                             console.log(err);
                         });
                 }
+            },
+            downloadWP(){
+                let host = window.location.host;
+                window.open(host + '/file/white-paper-v2.4.pdf');
             }
         }
     };
