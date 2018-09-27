@@ -5,7 +5,8 @@
     <Architecture></Architecture>
     <Roadmap></Roadmap>
     <About></About>
-    <Footer></Footer>  </div>
+    <Footer></Footer>
+  </div>
 </template>
 
 <script>
