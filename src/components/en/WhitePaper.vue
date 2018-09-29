@@ -185,16 +185,16 @@
                         url: '/api/user/register'
                     })
                         .then((res) => {
-                            console.log('新增成功！', res);
+                            // console.log('新增成功！', res);
                             if (res.data.state == 1) {
                                 this.$notify.success({
-                                    message: '新增成功!',
+                                    message: 'success!',
                                     duration: 2000
                                 });
                                 this.clearUser();
                             } else {
                                 this.$notify.error({
-                                    message: '新增失败！',
+                                    message: 'fail！',
                                     duration: 2000
                                 });
                             }

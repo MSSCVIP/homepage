@@ -57,10 +57,19 @@ html,body{
   cursor: pointer;
 }
 .ms-bg-yellow{
-  background: @msYellow!important;
+  background-color: #f5ae48;
+  //background: linear-gradient(90deg ,#f5ae48 50%, #f5ae48 100%) !important;
   -webkit-box-shadow:  0 5px 15px @msYellow;
   -moz-box-shadow:  0 5px 15px @msYellow;
   box-shadow:  0 5px 15px @msYellow;
+  transition: all .5s ease;
+  &:hover{
+    background-color: #f5a248;
+    -webkit-box-shadow:  0 5px 20px 5px @msYellow;
+    -moz-box-shadow:  0 5px 20px 5px @msYellow;
+    box-shadow:  0 5px 20px 5px @msYellow;
+    //background: linear-gradient(90deg ,#f5ae48 50%, #f58948 100%) !important;
+  }
 }
 .with-arrow{
   position: relative;
@@ -430,7 +439,7 @@ html,body{
   .roadmap-content{
     position: absolute;
     left: 50%;
-    top: 120px;
+    top: 0px;
     &:before{
       position: absolute;
       content:"";

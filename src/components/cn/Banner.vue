@@ -17,12 +17,31 @@
                 </el-rows>
             </div>
         </div>
+        <script type="x-shader/x-vertex" id="shaderVs">
+            varying vec2 vN;
+            void main() {
+                vec3 e = normalize( vec3( modelViewMatrix * vec4( position, 1.0 ) ) );
+                vec3 n = normalize( normalMatrix * normal );
+                vec3 r = reflect( e, n );
+                float m = 2. * sqrt( pow( r.x, 2. ) + pow( r.y, 2. ) + pow( r.z + 1., 2. ) );
+                vN = r.xy / m + .5;
+                gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1. );
+            }
+        </script>
+        <script type="x-shader/x-vertex" id="shaderFs">
+            uniform sampler2D tMatCap;
+            varying vec2 vN;
+            void main() {
+
+                    vec3 base = texture2D( tMatCap, vN ).rgb;
+                    gl_FragColor = vec4( base, 1. );
+            }
+        </script>
     </div>
 </template>
 <script>
     import Mheader from "@/components/cn/Header";
     import * as THREE from 'three';
-    import $ from 'jquery';
     import FBXLoader from 'three-fbx-loader';
 
     export default {
@@ -37,18 +56,19 @@
                 renderer: "",
                 light: "",
                 mesh: "",
-                cube:""
+                cube: ""
             }
         },
         mounted() {
             this.init();
             this.animate();
-            $(document).mousemove((e)=>{
+            document.addEventListener("mousemove", (e) => {
+                // if(!this.mesh) return;
                 this.rotateCube(e);
-            })
+            }, true)
         },
         methods: {
-            rotateCube(e){
+            rotateCube(e) {
                 // if(!this.mesh){
                 //     return;
                 // }
@@ -86,7 +106,7 @@
                 // this.camera = new THREE.OrthographicCamera(-2, 2, 1.5, 1.5, 1, 10);
                 // this.camera.position.set(0, 0, 5);
                 // this.camera.lookAt(new THREE.Vector3(0,0,0));
-                this.camera = new THREE.PerspectiveCamera(15, 1200 / 800, .5, 10);
+                this.camera = new THREE.PerspectiveCamera(15, 1200 / 800, 1, 10);
                 this.camera.position.set(0, 3, 4);
                 this.camera.lookAt(this.scene.position);
             },
@@ -97,49 +117,58 @@
                 this.renderer.setSize(1200, 800);
                 this.$refs.cube.appendChild(this.renderer.domElement);
             },
-            initLight(){
-
-                this.scene.add( new THREE.AmbientLight( 0x555555 ) );
-                this.light = new THREE.DirectionalLight(0xdfebff,1)
-                this.light.position.set( 50, 200, 100 );
-                this.light.position.multiplyScalar( 1.3 );
+            initLight() {
+                this.scene.add(new THREE.AmbientLight(0xffffff));
+                this.light = new THREE.DirectionalLight(0xffffff, 1)
+                this.light.position.set(50, 200, 100);
+                this.light.position.multiplyScalar(1.3);
                 this.light.castShadow = true;
                 this.light.shadow.mapSize.width = 1024;
                 this.light.shadow.mapSize.height = 1024;
                 let d = 300;
-                this.light.shadow.camera.left = - d;
+                this.light.shadow.camera.left = -d;
                 this.light.shadow.camera.right = d;
                 this.light.shadow.camera.top = d;
-                this.light.shadow.camera.bottom = - d;
+                this.light.shadow.camera.bottom = -d;
                 this.light.shadow.camera.far = 1;
-                this.scene.add( this.light );
-
-
+                this.scene.add(this.light);
             },
             initMesh() {
-                // let material = new THREE.MeshNormalMaterial();
-                // let geometry = new THREE.CubeGeometry(.7, .7, .7);
-                // // let material = new THREE.MeshBasicMaterial();
-                // this.mesh = new THREE.Mesh(geometry, material);
-                const that = this;
+                let that = this;
+                let texture = new THREE.TextureLoader().load('texture/metal2.jpg');
 
-                let loader = new THREE.JSONLoader();
-                loader.load(
-                    'mesh/shell.json',
-                    function (geometry,materials) {
+                let shaderMaterials = new THREE.ShaderMaterial({
+                    uniforms:{
+                        tMatCap:{
+                            type:'t',
+                            value: texture
+                        }
+                    },
+                    vertexShader: document.getElementById('shaderVs').textContent,
+                    fragmentShader:document.getElementById('shaderFs').textContent,
+                    flatShading: THREE.SmoothShading
+                })
+
+                // let geometry = new THREE.SphereGeometry(1,32,32);
+                // that.cube = new THREE.Mesh(geometry,shaderMaterials);
+                // that.cube.scale.x = that.cube.scale.y = that.cube.scale.z = .3;
+                // that.cube.position.set(-.3, 0, .1);
+                // that.scene.add(that.cube);
+
+                let loader1 = new THREE.JSONLoader();
+                loader1.load(
+                    'mesh/c.json',
+                    function (geometry, materials) {
+                        console.log(materials,shaderMaterials)
+                        materials.splice(3,1,shaderMaterials);
                         that.cube = new THREE.Mesh(geometry, materials);
-                        that.cube.scale.x = that.cube.scale.y = that.cube.scale.z = .3;
-                        that.cube.position.set(-.3,0,.1);
+                        that.cube.scale.x = that.cube.scale.y = that.cube.scale.z = .4;
+                        that.cube.position.set(-.3, 0, 0);
                         that.scene.add(that.cube);
+                        console.log(that.cube)
                     }
                 )
-                // let loader = new FBXLoader();
-                // loader.load(
-                //     'mesh/cube.fbx',
-                //     (obj)=>{
-                //         this.scene.add(obj)
-                //     }
-                // )
+
             },
             animate() {
                 requestAnimationFrame(this.animate);
