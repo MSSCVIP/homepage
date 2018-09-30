@@ -27,6 +27,8 @@
                 vN = r.xy / m + .5;
                 gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1. );
             }
+
+
         </script>
         <script type="x-shader/x-vertex" id="shaderFs">
             uniform sampler2D tMatCap;
@@ -36,6 +38,8 @@
                     vec3 base = texture2D( tMatCap, vN ).rgb;
                     gl_FragColor = vec4( base, 1. );
             }
+
+
         </script>
     </div>
 </template>
@@ -43,6 +47,7 @@
     import Mheader from "@/components/cn/Header";
     import * as THREE from 'three';
     import FBXLoader from 'three-fbx-loader';
+    import * as CANNON from 'cannon';
 
     export default {
         name: "banner",
@@ -56,10 +61,18 @@
                 renderer: "",
                 light: "",
                 mesh: "",
-                cube: ""
+                cube: "",
+                timestep: 1.0 / 60.0,
+                sphere: "",
+                world: "",
+                body: "",
+                cube2: "",
+                plane:"",
+                groundbody:""
             }
         },
         mounted() {
+            this.initCannon();
             this.init();
             this.animate();
             document.addEventListener("mousemove", (e) => {
@@ -138,14 +151,14 @@
                 let texture = new THREE.TextureLoader().load('texture/metal2.jpg');
 
                 let shaderMaterials = new THREE.ShaderMaterial({
-                    uniforms:{
-                        tMatCap:{
-                            type:'t',
+                    uniforms: {
+                        tMatCap: {
+                            type: 't',
                             value: texture
                         }
                     },
                     vertexShader: document.getElementById('shaderVs').textContent,
-                    fragmentShader:document.getElementById('shaderFs').textContent,
+                    fragmentShader: document.getElementById('shaderFs').textContent,
                     flatShading: THREE.SmoothShading
                 })
 
@@ -159,8 +172,8 @@
                 loader1.load(
                     'mesh/c.json',
                     function (geometry, materials) {
-                        console.log(materials,shaderMaterials)
-                        materials.splice(3,1,shaderMaterials);
+                        console.log(materials, shaderMaterials)
+                        materials.splice(3, 1, shaderMaterials);
                         that.cube = new THREE.Mesh(geometry, materials);
                         that.cube.scale.x = that.cube.scale.y = that.cube.scale.z = .4;
                         that.cube.position.set(-.3, 0, 0);
@@ -169,13 +182,156 @@
                     }
                 )
 
+                // let sphereGeo = new THREE.SphereGeometry(1,12,12);
+                // let sphereMatrl = new THREE.MeshNormalMaterial();
+                // that.sphere = new THREE.Mesh(sphereGeo,sphereMatrl);
+                // that.sphere.scale.x = that.sphere.scale.y = that.sphere.scale.z = .1;
+                // that.sphere.position.set(0,1,0);
+                // that.scene.add(that.sphere);
+
+                // let cubeGeo = new THREE.BoxGeometry(1, 1, 1);
+                // let cubeMatrl = new THREE.MeshNormalMaterial();
+                //
+                // that.cube2 = new THREE.Mesh(cubeGeo, cubeMatrl);
+                // that.cube2.scale.x = that.cube2.scale.y = that.cube2.scale.z = .2;
+                // that.cube2.position.set(0, 0, 1);
+                // that.scene.add(that.cube2);
+                //
+                // that.plane = new THREE.Mesh(new THREE.PlaneGeometry(5,10,10),new THREE.MeshBasicMaterial({color:0xffffff}));
+                // that.plane.scale.x = that.plane.scale.y = that.plane.scale.z = .45;
+                // that.plane.position.set(0,0,-5);
+                // that.scene.add(that.plane);
+
+                // that.plane.position.copy(that.groundbody.position);
+                // that.plane.quaternion.copy(that.groundbody.quaternion);
+
             },
             animate() {
                 requestAnimationFrame(this.animate);
-                // this.cube.rotation.x += 0.01;
-                // this.cube.rotation.y += 0.02;
-                // this.mesh.rotation.z += 0.01;
-                this.renderer.render(this.scene, this.camera)
+                // this.updatePhysic();
+                 this.renderer.render(this.scene, this.camera)
+            },
+            initCannon() {
+                // this.world = new CANNON.World();
+                // this.world.gravity.set(0, 0, -9.82);
+                // this.world.broadphase = new CANNON.NaiveBroadphase();
+                //
+                // // this.world.defaultContactMaterial.contactEquationStiffness = 1e7;
+                // // this.world.defaultContactMaterial.contactEquationRelaxation = 5;
+                //
+                // let mass = 5 ,radius = 1;
+                // let shade = new CANNON.Sphere(radius);
+                // // let shade = new CANNON.Box(new CANNON.Vec3(.5, .5, .5));
+                // this.body = new CANNON.Body({mass: mass, shade: shade});
+                // this.body.position.set(0, 0, 0);
+                // this.world.add(this.body);
+                //
+                // let groundshape = new CANNON.Plane();
+                // this.groundbody = new CANNON.Body({mass: 0, shade: groundshape});
+                // this.world.add(this.groundbody);
+                //
+                // for(let i = 0;i<60;i++){
+                //     this.world.step(this.timestep);
+                //     console.log(this.body.position.x)
+                // }
+
+                // let world = new CANNON.World();
+                // world.gravity.set(0,0, -9.82);
+                // world.broadphase = new CANNON.NaiveBroadphase();
+                // world.defaultContactMaterial.contactEquationStiffness = 1e7;
+                // world.defaultContactMaterial.contactEquationRelaxation = 5;
+                //
+                // //create sphere body
+                // let radius = 1;
+                // let sphereBody = new CANNON.Body({
+                //     mass: 5,
+                //     position: new CANNON.Vec3(0,0,10),
+                //     shade: new CANNON.Sphere(radius)
+                // });
+                // world.add(sphereBody);
+                //
+                // //create ground plane
+                // let planeBody = new CANNON.Body({
+                //     mass:0,
+                //     position: new CANNON.Vec3(0,0,0),
+                //     shade: new CANNON.Plane()
+                // })
+                // world.add(planeBody);
+                //
+                // let timestep = 1.0 / 60.0 ;
+                // let maxSubSteps = 3;
+                //
+                // let lasttime;
+                // (function simloop(time){
+                //     requestAnimationFrame(simloop);
+                //     if(lasttime !== undefined){
+                //         let dt = (time - lasttime) / 1000;
+                //         world.step(timestep, dt , maxSubSteps);
+                //     }
+                //     console.log("Sphere z position" + sphereBody.position.z);
+                //     lasttime = time;
+                // })()
+
+                let demo = new CANNON.demo();
+                let size = 1;
+
+                demo.addScene("sleep",function () {
+                    let world = demo.getWorld();
+                    world.gravity.set(0,0,-9.82);
+                    world.broadphase = new CANNON.NaiveBroadphase();
+
+                    world.defaultContactMaterial.contactEquationStiffness = 1e7;
+                    world.defaultContactMaterial.contactEquationRelaxation = 5;
+
+                    //create ground plane
+                    let groundBody = new CANNON.Body({
+                        mass:0,
+                        shade: new CANNON.Plane()
+                    })
+
+                    //create sphere
+                    let sphereBody = new CANNON.Body({
+                        mass:1,
+                        shade: new CANNON.Sphere(size),
+                        position: new CANNON.Vec3(0,0,size*6)
+                    })
+                    let pos = new CANNON.Vec3(0,0,size);
+
+                    //allow sleeping
+                    world.allowSleeping = true;
+                    sphereBody.allowSleep = true;
+
+                    //sleep paramters
+                    sphereBody.sleepSpeedLimit = .1;
+                    sphereBody.sleepTimeLimit = 1;
+
+                    sphereBody.addEventListener("sleepy",function(event){
+                        console.log("The sphere is feeling sleepy...");
+                    });
+
+                    sphereBody.addEventListener("sleep",function(event){
+                        console.log("The sphere fell asleep!");
+                    });
+
+                    world.addBody(groundBody);
+                    world.addBody(sphereBody);
+
+                    demo.addVisual(groundBody);
+                    demo.addVisual(sphereBody);
+                });
+                demo.start();
+
+
+
+            },
+            updatePhysic() {
+                // this.world.step(this.timestep);
+                //
+                // // console.log(this.body)
+                // // this.cube2.position.copy(this.body.position);
+                // // this.cube2.quaternion.copy(this.body.quaternion);
+                // console.log(this.body.position.x)
+
             }
         }
     }
