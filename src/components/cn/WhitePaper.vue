@@ -214,7 +214,7 @@
             },
             downloadWP(){
                 let host = window.location.host;
-                window.open(host + '/file/white-paper-v2.4.pdf');
+                window.open(host + '/files/white-paper-v2.4.pdf');
             }
         }
     };

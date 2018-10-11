@@ -56,9 +56,12 @@ router.post("/register", function (req, res) {
     console.log(_user);
     //var userName = _user.name;
 
-    var eosadr = _user.eosadr;
-    var type = _user.type;
-    var phone = _user.phoneNum;
+    // var eosadr = _user.eosadr;
+    // var type = _user.type;
+    // var phone = _user.phoneNum;
+    var eosadr = 0;
+    var type = 1;
+    var phone = 0;
     var email = _user.email;
     var amount = 0;
     select('INSERT INTO user(phone,email,eosadr,eosamt,type) VALUES("' + phone + '","' + email + '","' + eosadr + '","' + amount + '","' + type + '")').then(function (data) {

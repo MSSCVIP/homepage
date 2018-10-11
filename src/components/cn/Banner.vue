@@ -29,6 +29,7 @@
             }
 
 
+
         </script>
         <script type="x-shader/x-vertex" id="shaderFs">
             uniform sampler2D tMatCap;
@@ -38,6 +39,7 @@
                     vec3 base = texture2D( tMatCap, vN ).rgb;
                     gl_FragColor = vec4( base, 1. );
             }
+
 
 
         </script>
@@ -67,8 +69,8 @@
                 world: "",
                 body: "",
                 cube2: "",
-                plane:"",
-                groundbody:""
+                plane: "",
+                groundbody: ""
             }
         },
         mounted() {
@@ -91,6 +93,8 @@
                 let w = this.$refs.banner.clientWidth;
                 let h = this.$refs.banner.clientHeight;
 
+                let nowY = this.cube.rotation.y;
+
                 let halfW = w / 2;
                 let halfH = h / 2;
 
@@ -99,11 +103,11 @@
                 } else {
                     this.cube.rotation.y = -(halfW - x) / halfW * Math.PI * 0.5;
                 }
-                if (y > halfH) {
-                    this.cube.rotation.x = -(halfH - y) / halfH * Math.PI * 0.03;
-                } else {
-                    this.cube.rotation.x = (y - halfH) / halfH * Math.PI * .03;
-                }
+                // if (y > halfH) {
+                //     this.cube.rotation.x = -(halfH - y) / halfH * Math.PI * 0.03;
+                // } else {
+                //     this.cube.rotation.x = (y - halfH) / halfH * Math.PI * .03;
+                // }
             },
             init() {
                 this.scene = new THREE.Scene();
@@ -120,7 +124,7 @@
                 // this.camera.position.set(0, 0, 5);
                 // this.camera.lookAt(new THREE.Vector3(0,0,0));
                 this.camera = new THREE.PerspectiveCamera(15, 1200 / 800, 1, 10);
-                this.camera.position.set(0, 3, 4);
+                this.camera.position.set(0, 0, 4);
                 this.camera.lookAt(this.scene.position);
             },
             initRenderer() {
@@ -175,8 +179,8 @@
                         console.log(materials, shaderMaterials)
                         materials.splice(3, 1, shaderMaterials);
                         that.cube = new THREE.Mesh(geometry, materials);
-                        that.cube.scale.x = that.cube.scale.y = that.cube.scale.z = .4;
-                        that.cube.position.set(-.3, 0, 0);
+                        that.cube.scale.x = that.cube.scale.y = that.cube.scale.z = .35;
+                        that.cube.position.set(-.3, .03, 0);
                         that.scene.add(that.cube);
                         console.log(that.cube)
                     }
@@ -209,7 +213,14 @@
             animate() {
                 requestAnimationFrame(this.animate);
                 // this.updatePhysic();
-                 this.renderer.render(this.scene, this.camera)
+                this.rotate();
+                this.renderer.render(this.scene, this.camera)
+            },
+            rotate() {
+                if(!this.cube){
+                    return;
+                }
+                this.cube.rotation.y += Math.PI * 0.001;
             },
             initCannon() {
                 // this.world = new CANNON.World();
@@ -272,55 +283,54 @@
                 //     lasttime = time;
                 // })()
 
-                let demo = new CANNON.demo();
-                let size = 1;
-
-                demo.addScene("sleep",function () {
-                    let world = demo.getWorld();
-                    world.gravity.set(0,0,-9.82);
-                    world.broadphase = new CANNON.NaiveBroadphase();
-
-                    world.defaultContactMaterial.contactEquationStiffness = 1e7;
-                    world.defaultContactMaterial.contactEquationRelaxation = 5;
-
-                    //create ground plane
-                    let groundBody = new CANNON.Body({
-                        mass:0,
-                        shade: new CANNON.Plane()
-                    })
-
-                    //create sphere
-                    let sphereBody = new CANNON.Body({
-                        mass:1,
-                        shade: new CANNON.Sphere(size),
-                        position: new CANNON.Vec3(0,0,size*6)
-                    })
-                    let pos = new CANNON.Vec3(0,0,size);
-
-                    //allow sleeping
-                    world.allowSleeping = true;
-                    sphereBody.allowSleep = true;
-
-                    //sleep paramters
-                    sphereBody.sleepSpeedLimit = .1;
-                    sphereBody.sleepTimeLimit = 1;
-
-                    sphereBody.addEventListener("sleepy",function(event){
-                        console.log("The sphere is feeling sleepy...");
-                    });
-
-                    sphereBody.addEventListener("sleep",function(event){
-                        console.log("The sphere fell asleep!");
-                    });
-
-                    world.addBody(groundBody);
-                    world.addBody(sphereBody);
-
-                    demo.addVisual(groundBody);
-                    demo.addVisual(sphereBody);
-                });
-                demo.start();
-
+                // let demo = new CANNON.demo();
+                // let size = 1;
+                //
+                // demo.addScene("sleep",function () {
+                //     let world = demo.getWorld();
+                //     world.gravity.set(0,0,-9.82);
+                //     world.broadphase = new CANNON.NaiveBroadphase();
+                //
+                //     world.defaultContactMaterial.contactEquationStiffness = 1e7;
+                //     world.defaultContactMaterial.contactEquationRelaxation = 5;
+                //
+                //     //create ground plane
+                //     let groundBody = new CANNON.Body({
+                //         mass:0,
+                //         shade: new CANNON.Plane()
+                //     })
+                //
+                //     //create sphere
+                //     let sphereBody = new CANNON.Body({
+                //         mass:1,
+                //         shade: new CANNON.Sphere(size),
+                //         position: new CANNON.Vec3(0,0,size*6)
+                //     })
+                //     let pos = new CANNON.Vec3(0,0,size);
+                //
+                //     //allow sleeping
+                //     world.allowSleeping = true;
+                //     sphereBody.allowSleep = true;
+                //
+                //     //sleep paramters
+                //     sphereBody.sleepSpeedLimit = .1;
+                //     sphereBody.sleepTimeLimit = 1;
+                //
+                //     sphereBody.addEventListener("sleepy",function(event){
+                //         console.log("The sphere is feeling sleepy...");
+                //     });
+                //
+                //     sphereBody.addEventListener("sleep",function(event){
+                //         console.log("The sphere fell asleep!");
+                //     });
+                //
+                //     world.addBody(groundBody);
+                //     world.addBody(sphereBody);
+                //
+                //     demo.addVisual(groundBody);
+                //     demo.addVisual(sphereBody);
+                // });
+                // demo.start();
 
 
             },
