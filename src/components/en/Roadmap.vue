@@ -69,8 +69,8 @@
                     <div class="item roadmap-down current">
                         <span class="quarter">Q3 2018</span>
                         <el-popover
-                                popper-class="roadmap-popper"
-                                placement="right"
+                                popper-class="roadmap-popper-up"
+                                placement="top"
                                 width="300"
                                 trigger="hover"
                         >
@@ -89,8 +89,8 @@
                     <div class="item roadmap-up">
                         <span class="quarter">Q4 2018</span>
                         <el-popover
-                                popper-class="roadmap-popper"
-                                placement="right"
+                                popper-class="roadmap-popper-down"
+                                placement="bottom"
                                 width="400"
                                 trigger="hover"
                         >
@@ -101,7 +101,7 @@
                                 <p>4.Expand development and operations team</p>
                                 <p>5.Hire external consultants (security team, marketing team)</p>
                             </div>
-                            <div class="item-name" slot="reference">
+                            <div class="item-name text-right" slot="reference">
                                 <b>Private placement & Operation</b>
                             </div>
                         </el-popover>
@@ -109,8 +109,8 @@
                     <div class="item roadmap-down">
                         <span class="quarter">Q1 2019</span>
                         <el-popover
-                                popper-class="roadmap-popper"
-                                placement="right"
+                                popper-class="roadmap-popper-up"
+                                placement="top"
                                 width="450"
                                 trigger="hover"
                         >
@@ -128,8 +128,8 @@
                     <div class="item roadmap-up">
                         <span class="quarter">Q2 2019</span>
                         <el-popover
-                                popper-class="roadmap-popper"
-                                placement="right"
+                                popper-class="roadmap-popper-down"
+                                placement="bottom"
                                 width="450"
                                 trigger="hover"
                         >
@@ -139,7 +139,7 @@
                                 <p>3.Recruitment block production team</p>
                                 <p>4.Graphical smart contract generation tool MVP test</p>
                             </div>
-                            <div class="item-name" slot="reference">
+                            <div class="item-name text-right" slot="reference">
                                 <b>Developer forum & Product test</b>
                             </div>
                         </el-popover>
@@ -166,9 +166,9 @@
                     <div class="item roadmap-up">
                         <span class="quarter">Q4 2019</span>
                         <el-popover
-                                popper-class="roadmap-popper"
-                                placement="left"
-                                width="350"
+                                popper-class="roadmap-popper-down"
+                                placement="bottom"
+                                width="330"
                                 trigger="hover"
                         >
                             <div class="item-content">
@@ -176,7 +176,7 @@
                                 <p>2.ICO issuance pass is mapped to the main chain</p>
                                 <p>3.To be announced</p>
                             </div>
-                            <div class="item-name" slot="reference">
+                            <div class="item-name text-right" slot="reference">
                                 <b>Main network mapping</b>
                             </div>
                         </el-popover>

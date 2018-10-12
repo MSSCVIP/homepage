@@ -82,20 +82,20 @@
                     if (!mailRegExp.test(value)) {
                         return callback(new Error('Please enter a valid email address.'));
                     } else {
-                        this.axios({
-                            method: "get",
-                            params: {
-                                email: value
-                            },
-                            url: "/api/user/checkEmail"
-                        }).then((res) => {
-                            let isExisted = res.data.existed;
-                            if (!isExisted) {
-                                this.isEmail = true;
-                            } else {
-                                callback(new Error('The email address is registered.'));
-                            }
-                        })
+                        // this.axios({
+                        //     method: "get",
+                        //     params: {
+                        //         email: value
+                        //     },
+                        //     url: "/api/user/checkEmail"
+                        // }).then((res) => {
+                        //     let isExisted = res.data.existed;
+                        //     if (!isExisted) {
+                        //         this.isEmail = true;
+                        //     } else {
+                        //         callback(new Error('The email address is registered.'));
+                        //     }
+                        // })
                     }
                 }
             };

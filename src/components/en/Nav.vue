@@ -1,10 +1,10 @@
 <template>
-    <div id="mnav" @click="activeNav" ref="nav">
-        <ul>
+    <div id="mnav" ref="nav">
+        <ul @click="activeNav">
             <li class="active"><a href="#">ABOUT</a></li>
             <li class=""><a href="#solution">SOLUTION</a></li>
             <li class=""><a href="#faq">FAQ</a></li>
-            <li class=""><a href="http://www.cubedex.io/">BLOG</a></li>
+            <li class=""><a href="http://blog.cubecart.io/" target="_blank">BLOG</a></li>
             <li class=""><a href="#roadmap">ROADMAP</a></li>
             <li class=""><a href="#team">TEAM</a></li>
             <li class=""><a href="#demo">DEMO</a></li>
@@ -30,8 +30,9 @@
         },
         methods: {
             activeNav(e) {
-                let lis = e.currentTarget.childNodes[0].childNodes;
                 let li = e.target.parentElement;
+                // console.log(li.nodeName)
+                let lis = e.currentTarget.childNodes;
 
                 for (let i = 0; i < lis.length; i++) {
                     lis[i].className=''

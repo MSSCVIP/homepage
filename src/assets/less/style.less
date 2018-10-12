@@ -144,8 +144,9 @@ html, body {
   transition: all .3s ease;
   &.fixed{
     padding-top: 0px;
-    background: url("../../assets/images/header-bg.png")0 0 no-repeat;
-    background-size: 100% 100%;
+    //background: url("../../assets/images/header-bg.png")0 0 no-repeat;
+    //background-size: 100% 100%;
+    background: linear-gradient(45deg,rgba(226,104,154,.9),rgba(64,91,211,.9));
     .logo{
       img{
         margin-top: 10px;
@@ -166,6 +167,9 @@ html, body {
         }
       }
     }
+    .lang-list{
+      background: #bbb;
+    }
   }
   .logo {
     text-align: left;
@@ -177,6 +181,7 @@ html, body {
   padding: 0;
   text-align: right;
   overflow: hidden;
+  margin-right: 150px;
   ul {
     float: right;
     margin-right: 0px;
@@ -343,16 +348,6 @@ html, body {
         }
       }
     }
-    .hand {
-      position: absolute;
-      right: 50%;
-      top: -115px;
-      margin-right: -890px;
-      z-index: 1001;
-      width: 559px;
-      height: 315px;
-      background: url("../images/hand.png") 0 0 no-repeat;
-    }
     h1 {
       margin-top: 120px;
       position: relative;
@@ -439,11 +434,12 @@ html, body {
   }
   .cube-swap {
     position: absolute;
-    top: -170px;
+    top: -168px;
     width: 779px;
     height: 532px;
     border-radius: 8px;
     background: #fff;
+    box-shadow: 0 0 70px rgba(29,17,86,.2);
     .swap-head {
       border-bottom: 1px solid #DEECFF;
       height: 168px;
@@ -485,7 +481,7 @@ html, body {
         width: 315px;
         border: 0;
         font-weight: 100;
-        padding-top: 40px;
+        padding-top: 50px;
         font-size: 62px;
         color: @ccBlue;
       }
@@ -900,17 +896,27 @@ html, body {
   }
 }
 
-.roadmap-popper{
+.roadmap-popper-up{
   border: none!important;
   background: #794EB6!important;
   color: #fff!important;
   line-height: 14px!important;
   .popper__arrow{
-    border-right-color: #794EB6!important;
-    border-left-color: #794EB6!important;
+    border-top-color: #794EB6!important;
     &:after{
-      border-right-color: #794EB6!important;
-      border-left-color: #794EB6!important;
+      border-top-color: #794EB6!important;
+    }
+  }
+}
+.roadmap-popper-down{
+  border: none!important;
+  background: #794EB6!important;
+  color: #fff!important;
+  line-height: 14px!important;
+  .popper__arrow{
+    border-bottom-color: #794EB6!important;
+    &:after{
+      border-bottom-color: #794EB6!important;
     }
   }
 }
@@ -986,7 +992,7 @@ html, body {
         background: url("../images/roadmap-up.png") 0 0 no-repeat;
         .item-name {
           bottom: 60px;
-          right: 30px;
+          right: 60px;
         }
         .quarter {
           top: -30px;

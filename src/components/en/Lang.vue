@@ -5,7 +5,7 @@
         </div>
         <div class="lang-list" v-if="show">
             <div class="item" v-for="(item,index) in langs" :data-index="index" @click="switchLang(index,item)">
-                <i :class="item.class"></i><span>{{item.lang}}</span>
+                <i :class="item.lang"></i><span>{{item.lang}}</span>
             </div>
         </div>
     </div>
@@ -30,14 +30,21 @@
         },
         methods:{
             showList(){
-                this.show = true;
+                if(!this.show){
+                    this.show = true;
+                }else {
+
+                    this.show = false;
+                }
             },
             switchLang(index,obj){
-                let oldLang = JSON.parse(JSON.stringify(this.defatult));
-                this.defatult = obj;
-                this.langs.splice(index,oldLang);
-                console.info(index,oldLang,JSON.stringify(this.langs))
-                this.show = false;
+                //this.langs = this.defatult
+                console.info(JSON.stringify(this.langs))
+                // let oldLang = JSON.parse(JSON.stringify(this.defatult));
+                // this.defatult = obj;
+                // this.langs.splice(index,oldLang);
+                // console.info(index,oldLang,JSON.stringify(this.langs))
+                 this.show = false;
             }
         }
     }
@@ -45,7 +52,6 @@
 <style lang="less">
     @background:rgba(255,255,255,.6);
     #lang{
-        display: none;
         position:absolute;
         right: 0;
         top: 20px;
@@ -108,16 +114,16 @@
             color: #fff;
             font-size: 20px;
         }
-        .cn-icon{
+        .ZH{
             background-position: 0 0;
         }
-        .en-icon{
+        .EN{
             background-position: 0 -23px;
         }
-        .ko-icon{
+        .KO{
             background-position: 0 -69px;
         }
-        .jp-icon{
+        .JP{
             background-position: 0 -46px;
         }
     }
