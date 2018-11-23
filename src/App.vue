@@ -12,13 +12,11 @@
 </template>
 
 <script>
-    import HelloWorld from './components/HelloWorld.vue'
     import vuex from 'vuex'
 
     export default {
         name: 'app',
         components: {
-            HelloWorld
         }
     }
 </script>

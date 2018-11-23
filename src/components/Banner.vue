@@ -61,7 +61,7 @@
     </div>
 </template>
 <script>
-    import Mheader from "@/components/en/Header";
+    import Mheader from "@/components/Header";
     import * as THREE from 'three';
     import FBXLoader from 'three-fbx-loader';
     import * as CANNON from 'cannon';

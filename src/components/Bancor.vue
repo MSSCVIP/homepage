@@ -17,7 +17,7 @@
                         MODEL
                     </div></el-col>
                 <el-col :span="12">
-                    <img src="../../assets/images/model.jpg" class="bancor-img" alt=""></el-col>
+                    <img src="@/assets/images/model.jpg" class="bancor-img" alt=""></el-col>
             </el-rows>
         </div>
     </div>

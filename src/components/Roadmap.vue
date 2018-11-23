@@ -8,7 +8,7 @@
                 <!--<div class="roadmap-list">-->
                     <!--<div class="item">-->
                         <!--<b>Q3 2018</b>-->
-                        <!--<img src="../../assets/images/roadmap_2018.png" alt="">-->
+                        <!--<img src="@/assets/images/roadmap_2018.png" alt="">-->
                         <!--<div class="item-content">-->
                             <!--<p>1.概念产生</p>-->
                             <!--<p>2.核心团队招聘</p>-->
@@ -19,7 +19,7 @@
                     <!--</div>-->
                     <!--<div class="item">-->
                         <!--<b>Q4 2018</b>-->
-                        <!--<img src="../../assets/images/roadmap_2018_1.png" alt="">-->
+                        <!--<img src="@/assets/images/roadmap_2018_1.png" alt="">-->
                         <!--<div class="item-content">-->
                             <!--<p>1.通证私募</p>-->
                             <!--<p>2.区块链主链产品POC概念验证</p>-->
@@ -30,7 +30,7 @@
                     <!--</div>-->
                     <!--<div class="item">-->
                         <!--<b>Q1 2019</b>-->
-                        <!--<img src="../../assets/images/roadmap_2019.png" alt="">-->
+                        <!--<img src="@/assets/images/roadmap_2019.png" alt="">-->
                         <!--<div class="item-content">-->
                             <!--<p>1.部署主链SAAS系统及测试</p>-->
                             <!--<p>2.钱包POC概念验证</p>-->
@@ -40,7 +40,7 @@
                     <!--</div>-->
                     <!--<div class="item">-->
                         <!--<b>Q2 2019</b>-->
-                        <!--<img src="../../assets/images/roadmap_2019.png" alt="">-->
+                        <!--<img src="@/assets/images/roadmap_2019.png" alt="">-->
                         <!--<div class="item-content">-->
                             <!--<p>1.建立及运营社区论坛及开发者论坛</p>-->
                             <!--<p>2.钱包MVP产品内测</p>-->
@@ -50,14 +50,14 @@
                     <!--</div>-->
                     <!--<div class="item">-->
                         <!--<b>Q3 2019</b>-->
-                        <!--<img src="../../assets/images/roadmap_2019.png" alt="">-->
+                        <!--<img src="@/assets/images/roadmap_2019.png" alt="">-->
                         <!--<div class="item-content">-->
                             <!--<p>1.映射ICO通证至主链</p>-->
                         <!--</div>-->
                     <!--</div>-->
                     <!--<div class="item">-->
                         <!--<b>Q4 2019</b>-->
-                        <!--<img src="../../assets/images/roadmap_2019.png" alt="">-->
+                        <!--<img src="@/assets/images/roadmap_2019.png" alt="">-->
                         <!--<div class="item-content">-->
                             <!--<p>1.部署主链SAAS系统</p>-->
                             <!--<p>2.ICO发行通证映射到主链</p>-->

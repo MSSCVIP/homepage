@@ -19,7 +19,7 @@
 
 <script>
     // @ is an alias to /src
-    import Lang from "@/components/en/Lang"
+    import Lang from "@/components/Lang"
 
     export default {
         name: 'mnav',

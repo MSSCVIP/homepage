@@ -4,7 +4,7 @@
             <el-tabs v-model="activeName" stretch="true" class="architecture-tabs">
                 <el-tab-pane label="生态模型" name="first">
                     <div class="model-panel">
-                        <img src="../../assets/images/model.png" class="model-img" alt="">
+                        <img src="@/assets/images/model.png" class="model-img" alt="">
                     </div>
                 </el-tab-pane>
                 <el-tab-pane label="功能模块" name="second">
@@ -99,12 +99,12 @@
                 </el-tab-pane>
                 <el-tab-pane label="BANCOR" name="fourth">
                     <div class="bancor-panel">
-                        <img src="../../assets/images/architecture-bancor.jpg" class="architecture-bancor" alt="">
+                        <img src="@/assets/images/architecture-bancor.jpg" class="architecture-bancor" alt="">
                     </div>
                 </el-tab-pane>
                 <el-tab-pane label="系统架构" name="fifth">
                     <div class="architecture-panel">
-                        <img src="../../assets/images/architecture-system.gif" class="architecture-system" alt="">
+                        <img src="@/assets/images/architecture-system.gif" class="architecture-system" alt="">
                     </div>
                 </el-tab-pane>
             </el-tabs>

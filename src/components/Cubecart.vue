@@ -10,7 +10,7 @@
             <el-rows>
                 <el-col :span="12">
                     <div class="video">
-                        <div class="play-btn" @click="seen=true"><img src="../../assets/images/play.png" alt=""></div>
+                        <div class="play-btn" @click="seen=true"><img src="@/assets/images/play.png" alt=""></div>
                     </div>
                 </el-col>
                 <el-col :span="12" class="text-left">

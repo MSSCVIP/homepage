@@ -1,10 +1,15 @@
 <template>
   <div class="home">
     <Banner></Banner>
-    <WhitePaper></WhitePaper>
-    <Architecture></Architecture>
+    <!--<p>{{$t('Create & deploy your e-Business fast')}}</p>-->
+    <Wallet></Wallet>
+    <Cubecart></Cubecart>
+    <Work></Work>
+    <Bancor></Bancor>
+    <Plug></Plug>
+    <Function></Function>
     <Roadmap></Roadmap>
-    <About></About>
+    <Team></Team>
     <Footer></Footer>
   </div>
 </template>
@@ -12,22 +17,32 @@
 <script>
     // @ is an alias to /src
 
-    import Banner from '@/components/cn/Banner'
-    import WhitePaper from '@/components/cn/WhitePaper'
-    import Architecture from '@/components/cn/Architecture'
-    import Roadmap from '@/components/cn/Roadmap'
-    import About from '@/components/cn/About'
-    import Footer from '@/components/cn/Footer'
+    import Banner from '@/components/Banner'
+    // import WhitePaper from '@/components/en/WhitePaper'
+    // import Architecture from '@/components/en/Architecture'
+    import Roadmap from '@/components/Roadmap'
+    import Footer from '@/components/Footer'
+    import Wallet from '@/components/Wallet'
+    import Cubecart from '@/components/Cubecart'
+    import Work from '@/components/Work'
+    import Team from '@/components/Team'
+    import Bancor from '@/components/Bancor'
+    import Plug from '@/components/Plug'
+    import Function from '@/components/Function'
 
     export default {
         name: 'home',
         components: {
             Banner,
-            WhitePaper,
-            Architecture,
+            Wallet,
+            Cubecart,
+            Work,
+            Team,
             Roadmap,
-            About,
-            Footer
+            Footer,
+            Bancor,
+            Plug,
+            Function
         },
     };
 </script>

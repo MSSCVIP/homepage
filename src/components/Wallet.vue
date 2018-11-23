@@ -5,7 +5,7 @@
                 <div class="swap-head">
                     <div class="head-left">
                         <el-rows>
-                            <el-col :span="8"><img src="../../assets/images/eos_active.png" alt=""></el-col>
+                            <el-col :span="8"><img src="../assets/images/eos_active.png" alt=""></el-col>
                             <el-col :span="8" class="head-info">
                                 <span class="cc-blue">INITIAl COSTANT</span>
                                 <span class="cc-blue">RESERVE</span>
@@ -39,14 +39,14 @@
                         <div class="ibo-main">
                             <el-rows>
                                 <el-col :span="8">
-                                    <img src="../../assets/images/eos_logo.png" alt="">
+                                    <img src="../assets/images/eos_logo.png" alt="">
                                     <p>EOS</p>
                                 </el-col>
                                 <el-col :span="8">
-                                    <img src="../../assets/images/swap_token.png" alt="">
+                                    <img src="../assets/images/swap_token.png" alt="">
                                 </el-col>
                                 <el-col :span="8">
-                                    <img src="../../assets/images/cubecart_logo.png" alt="">
+                                    <img src="../assets/images/cubecart_logo.png" alt="">
                                     <p>CBT</p></el-col>
                             </el-rows>
                         </div>
@@ -75,10 +75,10 @@
             </div>
             <div class="wallet-pic">
                 <div class="mac">
-                    <img src="../../assets/images/mac-wallet.png" alt="">
+                    <img src="../assets/images/mac-wallet.png" alt="">
                 </div>
                 <div class="iphone">
-                    <img src="../../assets/images/iphone-wallet.png" alt="">
+                    <img src="../assets/images/iphone-wallet.png" alt="">
                 </div>
             </div>
         </div>

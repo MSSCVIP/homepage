@@ -14,7 +14,7 @@
                     <div class="item">
                         <el-rows>
                             <el-col :span="4">
-                                <img src="../../assets/images/plug-1.png" alt="">
+                                <img src="../assets/images/plug-1.png" alt="">
                             </el-col>
                             <el-col :span="20">
                                 <b>SPEED BUILDING MALL SERVICE</b>
@@ -33,7 +33,7 @@
                     <div class="item">
                         <el-rows>
                             <el-col :span="4">
-                                <img src="../../assets/images/plug-2.png" alt="">
+                                <img src="../assets/images/plug-2.png" alt="">
                             </el-col>
                             <el-col :span="20">
                                 <b>ONE-CLICK INTEGRATED CHAIN CLOUD SERVICE</b>
@@ -52,7 +52,7 @@
                     <div class="item">
                         <el-rows>
                             <el-col :span="4">
-                                <img src="../../assets/images/plug-3.png" alt="">
+                                <img src="../assets/images/plug-3.png" alt="">
                             </el-col>
                             <el-col :span="20">
                                 <b>TEMPLATE AND DAPP PLUGIN</b>

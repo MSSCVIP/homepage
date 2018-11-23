@@ -16,7 +16,7 @@
                 </el-col>
                 <el-col :span="8">
                     <div class="bancor-protocol">
-                        <img src="../../assets/images/bancor.png" alt="">
+                        <img src="../assets/images/bancor.png" alt="">
                     </div>
                 </el-col>
                 <el-col :span="8">

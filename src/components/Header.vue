@@ -4,7 +4,7 @@
             <el-rows justify="space-between">
                 <el-col :span="4">
                     <div class="logo">
-                        <img src="../../assets/images/logo.png" alt="">
+                        <img src="../assets/images/logo.png" alt="">
                     </div>
                 </el-col>
                 <el-col :span="20">
@@ -17,7 +17,7 @@
 
 <script>
     // @ is an alias to /src
-    import Mnav from "@/components/en/Nav"
+    import Mnav from "@/components/Nav"
 
     export default {
         name: 'mheader',

@@ -72,7 +72,7 @@
                 right: 12px;
                 width: 25px;
                 height: 14px;
-                background: url("../../assets/images/arrow-down.png") 0 0 no-repeat;
+                background: url("../assets/images/arrow-down.png") 0 0 no-repeat;
             }
         }
         .lang-list{
@@ -107,7 +107,7 @@
             width: 23px;
             height: 23px;
             margin: 8.5px 8.5px 8.5px 0;
-            background: url("../../assets/images/lang.png") 0 0 no-repeat;
+            background: url("../assets/images/lang.png") 0 0 no-repeat;
         }
         span{
             float: left;

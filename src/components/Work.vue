@@ -5,7 +5,7 @@
                 HOW IT WORKS?
             </div>
             <div class="works text-center" >
-                <img src="../../assets/images/work.png" alt="">
+                <img src="../assets/images/work.png" alt="">
             </div>
         </div>
     </div>
